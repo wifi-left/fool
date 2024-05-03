@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FBI WARNING</title>
+    <style>
+        .app-root {
+            width: calc(100% - 32px);
+            height: calc(100% - 32px);
+            background-color: rgb(30, 30, 30);
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 16px 16px 16px 16px;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .launch {
+            width: calc(100% - 32px);
+            height: calc(100% - 32px);
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 16px 16px 16px 16px;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            display: inline-block;
+            opacity: 0;
+            z-index: 5;
+            transition: 3s;
+        }
+
+        .fbi-title {
+            background-color: red;
+            padding: 4px 4px 4px 4px;
+            font-size: 28px;
+            width: 240px;
+            display: inline-block;
+            height: 52px;
+            line-height: 52px;
+        }
+
+        .fbi-content {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .center {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            width: 80%;
+            max-width: 720px;
+            height: auto;
+            text-align: center;
+
+        }
+
+        #genshin-start {
+            display: none;
+        }
+
+        .center-icon {
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            background-image: url(/favicon.ico);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+
+        #genshin-icon-image {
+            height:80px;
+            opacity: 0;
+            transition: 3s;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="app-root">
+        <div class="center">
+            <h1 class="fbi-title">FBI WARNING</h1><br />
+            <p class="fbi-content">
+                Federal Law provides severe civil and criminal penalties for
+                the unauthorized reproduction, distribution, or exhibition of
+                copyrighted motion pictures (Title 17, United States Code,
+                Sections 501 and 508). The Federal Bureau of Investigation
+                investigates allegations of criminal copyright infringement
+                (Title 17, United States Code, Section 506).
+            </p>
+        </div>
+
+    </div>
+    <audio id="genshin-start" src="./GenshinStart.mp3"></audio>
+    <div class="launch" id="page-2">
+        <div class="center" id="genshin-icon-image">
+            <div class="center-icon"></div><br />
+        </div>
+    </div>
+    <script>
+        let countdown = 6;
+        let process = 0;
+        var genshinStartAO = document.getElementById("genshin-start");
+        var page2Obj = document.getElementById("page-2");
+        var genshinCenter = document.getElementById("genshin-icon-image");
+
+        genshinStartAO.pause();
+        let inter = setInterval(function () {
+            countdown -= 1;
+            if (countdown == 0) {
+                if (process == 0) {
+                    countdown = 3;
+                    page2Obj.style.opacity = 1;
+                    process = 1;
+                } else if (process == 1) {
+                    genshinStartAO.play();
+                    countdown = 3;
+                    process = 2;
+                } else if (process == 2) {
+                    genshinCenter.style.opacity = 1;
+                    countdown = 4;
+                    process = 3;
+                } else if (process == 3) {
+                    genshinCenter.style.transition = "18s";
+                    page2Obj.style.transition = "8s";
+
+                    countdown = 3;
+                    process = 4;
+                } else if (process == 4) {
+                    page2Obj.style.backgroundColor = "#333";
+                    
+                    genshinCenter.style.height = "100%";
+                    countdown = 22;
+                    process = 5;
+                } else {
+                    clearInterval(inter);
+                    location = "https://www.bilibili.com/video/BV1GJ411x7h7";
+                }
+
+            } else {
+
+            }
+
+        }, 1000);
+    </script>
+</body>
+
+</html>
